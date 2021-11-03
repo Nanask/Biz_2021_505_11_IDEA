@@ -1,0 +1,31 @@
+table.student_list {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+
+}
+table.student_list th {
+    background-color: #ccc;
+
+}
+
+table.student_list th,
+table.student_list td {
+    padding: 0.5rem;
+    border-bottom: 2px solid #ccc;
+}
+
+button.btn_save {
+    display: flex;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    background-color: dimgrey;
+    color: floralwhite;
+    margin-left: auto;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+

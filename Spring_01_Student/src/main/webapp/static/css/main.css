@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+header.main_header {
+    padding-top: 15px;
+    height: 15vh;
+    margin: auto;
+    text-align: center;
+    background-color: #6289dc;
+    color: white;
+}
+nav.main_nav {
+    padding: 0.5rem;
+    background-color: black;
+
+}
+nav.main_nav ul {
+    display: flex;
+    margin: 10px;
+}
+nav.main_nav li {
+    padding: 5px;
+    margin: 10px;
+    color: white;
+}
