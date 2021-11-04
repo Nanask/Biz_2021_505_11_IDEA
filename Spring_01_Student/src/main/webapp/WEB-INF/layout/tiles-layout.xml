@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!--tiles 를 이용해서 layout을 사용하겠다-->
+<!-- layout을 기초로 만들겠다?-->
+<!--layout에 header가 있으면 끼워넣어라?-->
+  <tiles-definitions>
+    <definition name="default" template="/WEB-INF/views/layout/layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>
+    </definition>
+<!--    위에 있는 definition 겉에 추가하겠다 -->
+    <definition name="layout" extends="default">
+        <put-attribute name="content" value="/WEB-INF/views/list.jsp"/>
+    </definition>
+</tiles-definitions>

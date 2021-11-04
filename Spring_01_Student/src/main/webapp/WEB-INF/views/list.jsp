@@ -19,6 +19,8 @@
 <body>
 <%@ include file="home.jsp"%>
     <table class="student_list">
+
+        <thead>
         <tr>
             <th>학번</th>
             <th>이름</th>
@@ -27,22 +29,35 @@
             <th>주소</th>
             <th>전화번호</th>
         </tr>
+        </thead>
+        <tbody>
+        <C:forEach items="${STLiST}" var="ST">
         <tr>
-            <td>20210001</td>
-            <td>홍길동</td>
-            <td>컴퓨터공학</td>
-            <td>2</td>
-            <td>서울시 동대문구</td>
-            <td>02-222-1234</td>
+            <td>${ST.st_num}</td>
+            <td>${ST.st_name}</td>
+            <td>${ST.st_dept}</td>
+            <td>${ST.st_grade}</td>
+            <td>${ST.st_address}</td>
+            <td>${ST.st_tel}</td>
         </tr>
-        <tr>
-            <td>20210002</td>
-            <td>성춘향</td>
-            <td>전자공학</td>
-            <td>3</td>
-            <td>전라북도 익산시</td>
-            <td>063-111-1234</td>
-        </tr>
+        </C:forEach>
+        </tbody>
+<%--        <tr>--%>
+<%--            <td>20210001</td>--%>
+<%--            <td>홍길동</td>--%>
+<%--            <td>컴퓨터공학</td>--%>
+<%--            <td>2</td>--%>
+<%--            <td>서울시 동대문구</td>--%>
+<%--            <td>02-222-1234</td>--%>
+<%--        </tr>--%>
+<%--        <tr>--%>
+<%--            <td>20210002</td>--%>
+<%--            <td>성춘향</td>--%>
+<%--            <td>전자공학</td>--%>
+<%--            <td>3</td>--%>
+<%--            <td>전라북도 익산시</td>--%>
+<%--            <td>063-111-1234</td>--%>
+<%--        </tr>--%>
     </table>
 <button class="btn_save">학생정보 추가</button>
 </body>

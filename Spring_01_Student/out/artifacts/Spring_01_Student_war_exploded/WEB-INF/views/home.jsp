@@ -31,7 +31,7 @@
         let tagName = e.target.tagName;
         if(tagName === "LI") {
             if(e.target.textContent === "학생정보") {
-                location.href="http://localhost:8080/student/stu/list"
+                location.href="http://localhost:8080/student/list"
             }
         }
     })

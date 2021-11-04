@@ -14,9 +14,6 @@
     <link href="${rootPath}/static/css/main.css" rel="stylesheet">
 </head>
 <body>
-<header class="main_header">
-    <h1>고려 고교 학사관리 2021 V1</h1>
-</header>
     <nav class="main_nav">
         <ul>
             <li>Home</li>
@@ -31,7 +28,7 @@
         let tagName = e.target.tagName;
         if(tagName === "LI") {
             if(e.target.textContent === "학생정보") {
-                location.href="http://localhost:8080/student/stu/list"
+                location.href="http://localhost:8080/student/list"
             }
         }
     })
