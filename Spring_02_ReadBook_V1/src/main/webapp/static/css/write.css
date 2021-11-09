@@ -1,0 +1,67 @@
+form.input_form {
+    display: flex;
+    width: 100%;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+div {
+    margin: 0 auto;
+    width: 100%;
+}
+input, button {
+    outline: none;
+    border: none;
+}
+
+input {
+    width: 80%;
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin: 10px;
+}
+
+div.input_one input{
+    width: 40%;
+}
+
+div.input_date {
+    display: flex;
+    justify-content: center;
+}
+div.input_date input:nth-child(1) {
+    flex: 1;
+    width: 30%;
+}
+
+div.input_date input:nth-child(2) {
+    width: 15%;
+}
+div.input_date input:nth-child(3) {
+    width: 15%;
+}
+
+textarea {
+    margin-top: 20px;
+    width: 82%;
+    height: 200px;
+    resize: none;
+}
+div.btn_box {
+    display: flex;
+    margin: 15px;
+
+}
+
+div.btn_box button{
+    display: inline-block;
+    padding: 15px;
+    margin: 15px;
+
+}
+
+div.btn_box button:nth-of-type(1) {
+    margin-left: auto;
+}
+
+

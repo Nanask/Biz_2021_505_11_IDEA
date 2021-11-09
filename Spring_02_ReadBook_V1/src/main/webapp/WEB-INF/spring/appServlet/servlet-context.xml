@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.callor.readbook" />
+
+    <mvc:resources mapping="/static/**" location="/static/" />
+<!--    <mvc:annotation-driven />-->
+    <!-- JSON이나 text로 데이터를 보낼 때 데이터가 깨지지 않도록 설정하는 것-->
+    <!--    mvc와 관련된 driven으로 가져오기-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                        <!--                        json 인데 text 형태로 보내지는 것들도 encoding 처리 해서 보내기-->
+                        <value>text/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+<!--    view 들을 커스텀 할수있는 코드?-->
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+<!--        view를 여러가지 사용할 때 필요한 기능-->
+        <property name="order" value="1" />
+    </bean>
+<!-- 클래스를 객체로 만드는 규칙 , tilesConfigurer 라는 객체를 만들어 사용할 준비를 해달라. -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+<!-- tiles_layout을 이용해서 layout을 구성하겠다!       -->
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/spring/tiles_layout.xml</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
