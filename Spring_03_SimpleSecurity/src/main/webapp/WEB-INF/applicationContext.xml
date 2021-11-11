@@ -4,6 +4,11 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
 
+<!--   Spring security 에 내장된 암호 검사 코드에서 사용할 bean-->
+    <bean id="PasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg index="0" value="4"/>
+    </bean>
+
     <bean id="cookieCsrfTokenRepository" class="org.springframework.security.web.csrf.CookieCsrfTokenRepository">
         <property name="cookieHttpOnly" value="false"/>
     </bean>
@@ -13,18 +18,26 @@
 
     <security:http>
         <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/member/login" access="permitAll"/>
         <security:intercept-url pattern="/**" access="isAuthenticated()"/>
-        <security:form-login username-parameter="username" password-parameter="password" />
         <security:logout/>
+<!--        위에서 만든 bean을 여기에 부착해줌-->
+        <security:csrf token-repository-ref="cookieCsrfTokenRepository"/>
+        <!--                login page는 login페이지로 이동했을 시 보이게 하겠다.-->
+<!--        우리가 만든 custom page를 사용하겠다.-->
+        <security:form-login
+                login-page="/member/login"
+                login-processing-url="login"
+                username-parameter="username" password-parameter="password" />
     </security:http>
-<!--    test용 로그인 사용자 설정-->
-    <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="callor"
-                               authorities="ROLE_ADMIN"
-                               password="{noop}1234"/>
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
+<!--&lt;!&ndash;    test용 로그인 사용자 설정&ndash;&gt;-->
+<!--    <security:authentication-manager>-->
+<!--        <security:authentication-provider>-->
+<!--            <security:user-service>-->
+<!--                <security:user name="callor"-->
+<!--                               authorities="ROLE_ADMIN"-->
+<!--                               password="{noop}1234"/>-->
+<!--            </security:user-service>-->
+<!--        </security:authentication-provider>-->
+<!--    </security:authentication-manager>-->
 </beans>
