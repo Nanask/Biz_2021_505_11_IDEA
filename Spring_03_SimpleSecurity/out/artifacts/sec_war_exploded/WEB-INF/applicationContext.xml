@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+<!--    최소한의 security 설정-->
+<!--    login으로 요청되는 패턴은 누구나 들어갈 수 있지만 다른 패턴은 들어갈 수 없게 한다.-->
+<!--   isAuthenticated가 true 이면 login화면이 나타나게 됨? -->
+
+    <security:http>
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+        <security:form-login username-parameter="username" password-parameter="password" />
+        <security:logout/>
+    </security:http>
+<!--    test용 로그인 사용자 설정-->
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="callor"
+                               authorities="ROLE_ADMIN"
+                               password="{noop}1234"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
