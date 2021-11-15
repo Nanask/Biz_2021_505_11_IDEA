@@ -14,7 +14,7 @@ public class HomeController {
 
     Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @Value("${username}")
+    @Value("${mysql.username}")
     private  String userName;
 
     @Value("${password}")
@@ -26,15 +26,15 @@ public class HomeController {
     @Value("${url}")
     private  String url;
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main() {
         logger.debug("여기는 main 입니다!");
-//        return "home/home";
-        return String.format("username %s\n" +
-                " password %s\n" +
-                "url %s\n" +
-                "dirver %s\n", userName,password,url,className);
+        return "home/home";
+//        return String.format("username %s\n" +
+//                " password %s\n" +
+//                "url %s\n" +
+//                "dirver %s\n", userName,password,url,className);
     }
 
     @RequestMapping(value = "/book", method = RequestMethod.GET)
