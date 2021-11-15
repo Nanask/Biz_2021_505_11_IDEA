@@ -3,6 +3,7 @@ package com.callor.sec.service.impl;
 import com.callor.sec.models.UserDetailsVO;
 import com.callor.sec.repository.MemberDao;
 import com.callor.sec.service.MemberService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +13,21 @@ public class MemberserviceImplV1 implements MemberService {
 
     // 생성자 주입방식
     private final MemberDao memDao;
-    public MemberserviceImplV1(MemberDao memDao) {
+//    public MemberserviceImplV1(MemberDao memDao) {
+//        this.memDao = memDao;
+//    }
+
+    /**
+     * security-context.xml에 선언된 bean을 가져와서
+     * 와이어드 하여 사용할 준비 하기
+     *
+     * bean으로 이미 선언이 되었기 때문에
+     * final 로 선언하고 생성자에서 주입받기기     */
+    private final PasswordEncoder passwordEncoder;
+
+    public MemberserviceImplV1(MemberDao memDao, PasswordEncoder passwordEncoder) {
         this.memDao = memDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -42,7 +56,27 @@ public class MemberserviceImplV1 implements MemberService {
 
     @Override
     public void insert(UserDetailsVO userDetailsVO) {
-        memDao.save(userDetailsVO);
+
+        /**
+         * BCryptPasswordEncoder : class
+         * Spring security 에서 제공하는 PasswordEncoder(BCryptPasswordEncoder) 를 사용하여
+         * 사용자의 비밀번호를 암호화 하기
+         */
+        String encPassword = passwordEncoder.encode(userDetailsVO.getPassword());
+
+        UserDetailsVO saveVO = userDetailsVO.builder()
+                        .username(userDetailsVO.getUsername())
+                        .password(encPassword)
+                        .isAccountNonLocked(true)
+                        .isEnabled(true)
+                        .isCredentialsNonExpired(true)
+                        .isAccountNonExpired(true)
+                        .build();
+
+
+        // db로 전송
+        memDao.save(saveVO);
+//        memDao.save(userDetailsVO);
 
     }
 

@@ -36,7 +36,7 @@ public class MemberController {
     @RequestMapping(value = "/join", method = RequestMethod.POST)
     public String join(UserDetailsVO userVO) {
 
-//        log.debug("회원가입:{}", userVO.toString());
+        log.debug("회원가입:{}", userVO.toString());
         memberService.insert(userVO);
         return "member/join";
     }
