@@ -33,15 +33,15 @@ public class LoginService implements UserDetailsService {
 
 //       username으로 member table에서 findById(username) 등을 수행하여
 //       User 정보를 가져온다
-//        UserDetailsVO userVO = UserDetailsVO.builder()
-//                .username("callor")
-//                .password(encPassword)
-//                .isAccountNonExpired(true)
-//                .isEnabled(true)
-//                .isCredentialsNonExpired(true)
-//                .isAccountNonLocked(true)
-//                .build();
-        UserDetailsVO userVO = memberDao.findById(username).get();
+        UserDetailsVO userVO = UserDetailsVO.builder()
+                .username("callor")
+                .password(encPassword)
+                .isAccountNonExpired(true)
+                .isEnabled(false)
+                .isCredentialsNonExpired(true)
+                .isAccountNonLocked(true)
+                .build();
+//        UserDetailsVO userVO = memberDao.findById(username).get();
 //       2. dao 에서 받은 사용자 정보가 없으면
 //        즉, username에 저장된 사용자 이름이 DB에 없으면
 //        강제로 exception을 발생하여 security 에게 알려준다.

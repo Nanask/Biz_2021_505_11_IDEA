@@ -19,8 +19,8 @@
 <form:form action="${rootPath}/login" cssClass="login_form" >
     <fieldset>
         <legend>Login</legend>
-        <c:if test="${param.error != null}">
-            <h3>로그인 오류</h3>
+        <c:if test="${param.error != null}">${AUTHOR}
+            <h3>${ERROR_MSG == null ? "로그인을 하세요" : ERROR_MSG}</h3>
         </c:if>
 
             <%--        <c:forEach items="" ></c:forEach>--%>
@@ -29,6 +29,8 @@
         <button class="btn btn_login">로그인</button>
         <button class="btn btn_join" type="button">회원가인</button>
     </fieldset>
+    <h1>${AUTHOR}</h1>
 </form:form>
+
 </body>
 </html>

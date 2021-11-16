@@ -28,6 +28,9 @@
           <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.9.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.10.0" />
           <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:2.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.9.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.26" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.2.18.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.6.1.Final" />
@@ -48,6 +51,8 @@
           <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.27" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.9.3" />
+          <element id="library" level="project" name="Maven: org.jasypt:jasypt-spring31:1.9.3" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.6" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.6" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.0" />
@@ -58,9 +63,6 @@
           <element id="library" level="project" name="Maven: org.webjars:webjars-locator-core:0.48" />
           <element id="library" level="project" name="Maven: io.github.classgraph:classgraph:4.8.115" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.12.0" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.9.6" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:2.3.9.RELEASE" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="sec/web/Web" />

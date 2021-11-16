@@ -73,7 +73,9 @@ POST는 http의 body에 담겨서 보내지기 때문에 일반적으로 데이�
     <div>
         <input  name="username" id="username" placeholder="사용자 이름"/>
     </div>
-    <div class="input_error"></div>
+    <%--        MSG가 null이면 로그인을 하도록 메세지를 보이고, 아니라면 ERROR_MSG를 보이게 하라--%>
+    <div class="input_error">
+    </div>
     <div>
         <input name="password" id="password" placeholder="비밀번호"/>
     </div>
