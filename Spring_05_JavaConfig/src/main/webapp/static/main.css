@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    /* vw , vh: 보고있는 화면을 100%로 하라*/
+    width: 100vw;
+    height: 100vh;
+}
+
+header,nav,section.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    background-color: #3f6fda;
+    padding: 2rem;
+    color: white;
+}
+nav {
+    background-color: #5aacec;
+    padding: 0.6rem;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav input {
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 8px;
+    margin: 5px;
+    display: inline-block;
+    width: 30%;
+}
+
+section.main {
+    flex: 1;
+}
+
+footer {
+    background-color: #6289dc;
+    color: white;
+    text-align: center;
+    padding: 0.7rem;
+}

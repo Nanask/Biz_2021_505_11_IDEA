@@ -20,10 +20,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.callor.js"})
+//@ComponentScan(basePackages = {"com.callor.js"})
 
 // 다른 컴포넌트를 추가하고 싶다면 배열형식으로 추가해줘도 좋다.
-//@ComponentScan(basePackages = {"com.callor.js.controller", "com.callor.js.service"})
+@ComponentScan(basePackages = {"com.callor.js.controller", "com.callor.js.service", "com.callor.js.config.beans"})
 public class ServletConfig implements WebMvcConfigurer {
 
     @Override

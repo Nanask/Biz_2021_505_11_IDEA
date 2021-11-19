@@ -11,7 +11,7 @@ public class MakeDBConnection {
 
     public static void main(String[] args) throws FileNotFoundException {
     final String propsFile
-                = "./src/main/webapp/WEB-INF/props/db.properties";
+                = "./src/main/resources/db.properties";
     final Map<String, String> sysEnv = System.getenv();
 
     final String driver = "com.mysql.cj.jdbc.Driver";

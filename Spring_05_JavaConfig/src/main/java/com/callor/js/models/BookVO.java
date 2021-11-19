@@ -6,6 +6,7 @@ import org.apache.ibatis.type.Alias;
 //BookVO 라는 이름으로 사용하겠다
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

@@ -3,7 +3,6 @@ package com.callor.js.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -31,22 +30,28 @@ public class MyBatisConfig {
     @Value("${db.password}")
     private String password;
 
-    // 환경변수를 가져와서 config를 설정
-    private EnvironmentStringPBEConfig envConfig() {
-        EnvironmentStringPBEConfig config
-                = new EnvironmentStringPBEConfig();
-        config.setAlgorithm("PBEWithMD5AndDES");
-        // 환경변수 불러오기
-        config.setPasswordEnvName("callor.com");
-        return config;
+    private final  StandardPBEStringEncryptor encryptor;
+
+    public MyBatisConfig(StandardPBEStringEncryptor encryptor) {
+        this.encryptor = encryptor;
     }
-//    encryptor를 사용해서 비밀번호를 복호화 시킬 설정
-    private StandardPBEStringEncryptor encryptor() {
-        StandardPBEStringEncryptor encryptor
-                = new StandardPBEStringEncryptor();
-        encryptor.setConfig(this.envConfig());
-        return encryptor;
-    }
+
+//    // 환경변수를 가져와서 config를 설정
+//    private EnvironmentStringPBEConfig envConfig() {
+//        EnvironmentStringPBEConfig config
+//                = new EnvironmentStringPBEConfig();
+//        config.setAlgorithm("PBEWithMD5AndDES");
+//        // 환경변수 불러오기
+//        config.setPasswordEnvName("callor.com");
+//        return config;
+//    }
+////    encryptor를 사용해서 비밀번호를 복호화 시킬 설정
+//    private StandardPBEStringEncryptor encryptor() {
+//        StandardPBEStringEncryptor encryptor
+//                = new StandardPBEStringEncryptor();
+//        encryptor.setConfig(this.envConfig());
+//        return encryptor;
+//    }
 
     //dataSource
     // 굳이 bean으로 등록할 필요가 없어서 private 로 변경
@@ -58,10 +63,12 @@ public class MyBatisConfig {
         ds.setDriverClassName(driver);
         ds.setUrl(url);
 //        암호화된것을 decrypt해서 가져오기?
-        String planUsername = this.encryptor().decrypt(username);
-        String planPassword = this.encryptor().decrypt(password);
-        ds.setUsername("root");
-        ds.setPassword("!Biz12341234");
+//        String planUsername = this.encryptor().decrypt(username);
+//        String planPassword = this.encryptor().decrypt(password);
+        String planUsername = encryptor.decrypt(username);
+        String planPassword = encryptor.decrypt(password);
+        ds.setUsername(planUsername);
+        ds.setPassword(planPassword);
         return ds;
     }
 
